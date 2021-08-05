@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">WeatherApp</string>
+    <string name="temperature_label">Temperature</string>
+    <string name="feels_like_label">Feels like</string>
+    <string name="city_coordinates">lt/ln: %s, %s"</string>
+    <string name="celsius">°C</string>
 </resources>
