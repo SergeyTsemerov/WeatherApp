@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="city_name_margin_top">50dp</dimen>
+    <dimen name="margin_15_dp">15dp</dimen>
+    <dimen name="temperature_value_text_size">50sp</dimen>
+    <dimen name="feels_like_text_size">35sp</dimen>
+    <dimen name="celsius_size">48sp</dimen>
+    <dimen name="feels_like_celsius_size">33sp</dimen>
+    <dimen name="fab_icon_size">56dp</dimen>
+    <dimen name="fab_margin">15dp</dimen>
+    <dimen name="recycler_item_padding">10dp</dimen>
+    <dimen name="recycler_item_text_size">25sp</dimen>
+    <dimen name="recycler_item_line_height">1dp</dimen>
+    <dimen name="recycler_item_line_margin_end">20dp</dimen>
+    <dimen name="city_name_text_size">35sp</dimen>
+    <dimen name="city_coordinates_margin_top">5dp</dimen>
+    <dimen name="margin_50dp">50dp</dimen>
+</resources>
