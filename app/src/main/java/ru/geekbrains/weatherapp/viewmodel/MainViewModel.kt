@@ -16,19 +16,20 @@ class MainViewModel(private val repository: Repository = RepositoryImpl()) : Vie
         return liveDataToObserve
     }
 
-    fun getWeatherFromLocalSource() {
-        liveDataToObserve.value = AppState.Loading
-        Thread {
-            sleep(1000)
-            liveDataToObserve.postValue(AppState.Success(repository.getWeatherFromLocalStorage()))
-        }.start()
-    }
+    fun getWeatherFromLocalSourceRus() = getDataFromLocalSource(isRussia = true)
 
-    fun getWeatherFromRemoteSource() {
+    fun getWeatherFromLocalSourceWorld() = getDataFromLocalSource(isRussia = false)
+
+    private fun getDataFromLocalSource(isRussia: Boolean) {
         liveDataToObserve.value = AppState.Loading
         Thread {
-            sleep(2000)
-            liveDataToObserve.postValue(AppState.Success(repository.getWeatherFromServer()))
+            sleep(3000)
+            liveDataToObserve.postValue(
+                AppState.Success(
+                    if (isRussia) repository.getWeatherFromLocalStorageRus()
+                    else repository.getWeatherFromLocalStorageWorld()
+                )
+            )
         }.start()
     }
 }
