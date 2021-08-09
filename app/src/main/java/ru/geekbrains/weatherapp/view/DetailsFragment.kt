@@ -25,22 +25,26 @@ class DetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val weather = arguments?.getParcelable<Weather>(BUNDLE_EXTRA)
-        if (weather != null) {
+        arguments?.getParcelable<Weather>(BUNDLE_EXTRA)?.let { weather ->
             populateData(weather)
         }
     }
 
     private fun populateData(weatherData: Weather) {
         with(binding) {
-            cityName.text = weatherData.city.city
-            cityCoordinates.text = String.format(
-                getString(R.string.city_coordinates),
-                weatherData.city.lat.toString(),
-                weatherData.city.lon.toString()
-            )
-            temperatureValue.text = weatherData.temperature.toString()
-            feelsLikeValue.text = weatherData.feelsLike.toString()
+            weatherData.city.also { city ->
+                cityName.text = city.city
+                cityCoordinates.text = String.format(
+                    getString(R.string.city_coordinates),
+                    city.lat.toString(),
+                    city.lon.toString()
+                )
+            }
+            weatherData.apply {
+                temperatureValue.text = temperature.toString()
+                feelsLikeValue.text = feelsLike.toString()
+            }
+
         }
     }
 
