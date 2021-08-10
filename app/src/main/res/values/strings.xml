@@ -4,4 +4,6 @@
     <string name="feels_like_label">Feels like</string>
     <string name="city_coordinates">lt/ln: %s, %s"</string>
     <string name="celsius">°C</string>
+    <string name="error">Error</string>
+    <string name="reload">Reload</string>
 </resources>

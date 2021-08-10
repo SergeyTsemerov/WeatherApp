@@ -5,16 +5,9 @@ import ru.geekbrains.weatherapp.model.data.getRussianCities
 import ru.geekbrains.weatherapp.model.data.getWorldCities
 
 class RepositoryImpl : Repository {
-    override fun getWeatherFromServer(): Weather {
-        return Weather()
-    }
+    override fun getWeatherFromServer() = Weather()
 
-    override fun getWeatherFromLocalStorageRus(): List<Weather> {
-        return getRussianCities()
-    }
+    override fun getWeatherFromLocalStorageRus() = getRussianCities()
 
-    override fun getWeatherFromLocalStorageWorld(): List<Weather> {
-        return getWorldCities()
-    }
-
+    override fun getWeatherFromLocalStorageWorld() = getWorldCities()
 }
