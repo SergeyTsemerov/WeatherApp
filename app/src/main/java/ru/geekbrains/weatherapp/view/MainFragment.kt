@@ -78,9 +78,15 @@ class MainFragment : Fragment() {
             }
             is AppState.Error -> {
                 binding.loadingLayout.hide()
-                binding.mainFragmentFAB.showSnackBar(getString(R.string.error), getString(R.string.reload)) {
-                    if (isDataSetRus) viewModel.getWeatherFromLocalSourceRus()
-                    else viewModel.getWeatherFromLocalSourceWorld()
+                binding.mainFragmentFAB.showSnackBar(
+                    getString(R.string.error),
+                    getString(R.string.reload)
+                ) {
+                    if (isDataSetRus) {
+                        viewModel.getWeatherFromLocalSourceRus()
+                    } else {
+                        viewModel.getWeatherFromLocalSourceWorld()
+                    }
                 }
             }
         }
