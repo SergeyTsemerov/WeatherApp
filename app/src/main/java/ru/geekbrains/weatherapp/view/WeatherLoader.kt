@@ -31,7 +31,7 @@ class WeatherLoader(
         try {
             val uri =
                 URL("https://api.weather.yandex.ru/v2/informers?lat=${lat}&lon=${lon}")
-            val handler = Handler(Looper.myLooper()!!)
+            val handler = Looper.myLooper()?.let { Handler(it) }
             Thread(Runnable {
                 lateinit var urlConnection: HttpsURLConnection
                 try {
@@ -46,7 +46,7 @@ class WeatherLoader(
                         BufferedReader(InputStreamReader(urlConnection.inputStream))
                     val weatherDTO: WeatherDTO =
                         Gson().fromJson(getLines(bufferedReader), WeatherDTO::class.java)
-                    handler.post { listener.onLoaded(weatherDTO) }
+                    handler?.post { listener.onLoaded(weatherDTO) }
                 } catch (e: Exception) {
                     Log.e("WEATHER", "Fail Connection", e)
                     e.printStackTrace()
