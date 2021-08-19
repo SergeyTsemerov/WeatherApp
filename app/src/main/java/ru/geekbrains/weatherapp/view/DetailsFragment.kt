@@ -9,10 +9,10 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.details_fragment.*
 import ru.geekbrains.weatherapp.R
 import ru.geekbrains.weatherapp.databinding.DetailsFragmentBinding
 import ru.geekbrains.weatherapp.model.AppState
+import ru.geekbrains.weatherapp.model.data.City
 import ru.geekbrains.weatherapp.model.data.Weather
 import ru.geekbrains.weatherapp.viewmodel.DetailsViewModel
 
@@ -53,7 +53,7 @@ class DetailsFragment : Fragment() {
             is AppState.Success -> {
                 binding.main.show()
                 binding.loadingLayout.hide()
-                setWeather(appState.weatherData[0])
+                setWeather(appState.weatherData.first())
             }
             is AppState.Loading -> {
                 binding.main.hide()
@@ -63,7 +63,10 @@ class DetailsFragment : Fragment() {
                 binding.main.show()
                 binding.loadingLayout.hide()
                 binding.main.showSnackBar(getString(R.string.error), getString(R.string.reload)) {
-                    viewModel.getWeatherFromRemoteSource(weatherBundle.city.lat, weatherBundle.city.lon)
+                    viewModel.getWeatherFromRemoteSource(
+                        weatherBundle.city.lat,
+                        weatherBundle.city.lon
+                    )
                 }
             }
         }
@@ -78,15 +81,28 @@ class DetailsFragment : Fragment() {
                     city.lat.toString(),
                     city.lon.toString()
                 )
+                saveCity(city, weather)
             }
             temperatureValue.text = weather.temperature.toString()
             feelsLikeValue.text = weather.feelsLike.toString()
             weatherCondition.text = weather.condition
+
+            Picasso
+                .get()
+                .load("https://cdn.pixabay.com/photo/2015/03/26/09/47/sky-690293_960_720.jpg")
+                .into(headerIcon)
         }
-        Picasso
-            .get()
-            .load("https://cdn.pixabay.com/photo/2015/03/26/09/47/sky-690293_960_720.jpg")
-            .into(headerIcon)
+    }
+
+    private fun saveCity(city: City, weather: Weather) {
+        viewModel.saveCityToDB(
+            Weather(
+                city,
+                weather.temperature,
+                weather.feelsLike,
+                weather.condition
+            )
+        )
     }
 
     companion object {
