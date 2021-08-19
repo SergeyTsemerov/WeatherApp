@@ -15,4 +15,5 @@
     <dimen name="city_name_text_size">35sp</dimen>
     <dimen name="city_coordinates_margin_top">5dp</dimen>
     <dimen name="margin_50dp">50dp</dimen>
+    <dimen name="town_header_height">150dp</dimen>
 </resources>
