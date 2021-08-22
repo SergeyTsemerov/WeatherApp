@@ -5,13 +5,13 @@ import androidx.lifecycle.ViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import ru.geekbrains.weatherapp.app.App.Companion.getHistoryDao
 import ru.geekbrains.weatherapp.model.AppState
+import ru.geekbrains.weatherapp.model.data.Weather
 import ru.geekbrains.weatherapp.model.data.convertDtoToModel
 import ru.geekbrains.weatherapp.model.dto.FactDTO
 import ru.geekbrains.weatherapp.model.dto.WeatherDTO
-import ru.geekbrains.weatherapp.model.repository.DetailsRepository
-import ru.geekbrains.weatherapp.model.repository.DetailsRepositoryImpl
-import ru.geekbrains.weatherapp.model.repository.RemoteDataSource
+import ru.geekbrains.weatherapp.model.repository.*
 
 private const val SERVER_ERROR = "Ошибка сервера"
 private const val REQUEST_ERROR = "Ошибка запроса на сервер"
@@ -19,12 +19,17 @@ private const val CORRUPTED_DATA = "Неполные данные"
 
 class DetailsViewModel(
     val detailsLiveData: MutableLiveData<AppState> = MutableLiveData(),
-    private val detailsRepository: DetailsRepository = DetailsRepositoryImpl(RemoteDataSource())
+    private val detailsRepository: DetailsRepository = DetailsRepositoryImpl(RemoteDataSource()),
+    private val historyRepository: LocalRepository = LocalRepositoryImpl(getHistoryDao())
 ) : ViewModel() {
 
     fun getWeatherFromRemoteSource(lat: Double, lon: Double) {
         detailsLiveData.value = AppState.Loading
         detailsRepository.getWeatherDetailsFromServer(lat, lon, callback)
+    }
+
+    fun saveCityToDB(weather: Weather) {
+        historyRepository.saveEntity(weather)
     }
 
     private val callback = object : Callback<WeatherDTO> {

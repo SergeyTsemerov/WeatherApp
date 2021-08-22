@@ -7,4 +7,5 @@
     <string name="error">Error</string>
     <string name="reload">Reload</string>
     <string name="cloudy">Cloudy</string>
+    <string name="menu_title_history">History</string>
 </resources>
