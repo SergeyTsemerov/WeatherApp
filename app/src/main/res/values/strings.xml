@@ -8,4 +8,10 @@
     <string name="reload">Reload</string>
     <string name="cloudy">Cloudy</string>
     <string name="menu_title_history">History</string>
+    <string name="contacts">Contacts</string>
+    <string name="contacts_access">Доступ к контактам</string>
+    <string name="contacts_access_purpose">Объяснение цели разрешения</string>
+    <string name="contacts_access_granted">Разрешить</string>
+    <string name="contacts_access_denied">Запретить</string>
+    <string name="contacts_alert_dialog_close">Закрыть</string>
 </resources>
