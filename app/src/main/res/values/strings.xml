@@ -8,10 +8,20 @@
     <string name="reload">Reload</string>
     <string name="cloudy">Cloudy</string>
     <string name="menu_title_history">History</string>
-    <string name="contacts">Contacts</string>
-    <string name="contacts_access">Доступ к контактам</string>
-    <string name="contacts_access_purpose">Объяснение цели разрешения</string>
-    <string name="contacts_access_granted">Разрешить</string>
-    <string name="contacts_access_denied">Запретить</string>
-    <string name="contacts_alert_dialog_close">Закрыть</string>
+    <string name="dialog_button_close">Закрыть</string>
+    <string name="dialog_title_no_gps">Доступ к геолокации закрыт</string>
+    <string name="dialog_message_no_gps">Разрешите доступ к геолокации, если хотите узнать погоду текущего места</string>
+    <string name="dialog_title_gps_turned_off">GPS отключён</string>
+    <string name="dialog_message_last_location_unknown">Местонахождение неизвестно. Включите GPS, если хотите получить погоду по текущему адресу</string>
+    <string name="dialog_message_last_known_location">Показана последняя известная локация. Включите GPS, если хотите обновить местонахождение</string>
+    <string name="dialog_rationale_title">Доступ к геолокации</string>
+    <string name="dialog_rationale_message">Объяснение</string>
+    <string name="dialog_rationale_give_access">Предоставить доступ</string>
+    <string name="dialog_rationale_decline">Не надо</string>
+    <string name="dialog_address_title">Ваш адрес</string>
+    <string name="dialog_address_get_weather">Узнать погоду</string>
+    <string name="google_maps">Google Maps</string>
+    <string name="default_address">Red Square, 1, Moscow</string>
+    <string name="button_search_map">Search</string>
+    <string name="marker_start">Start</string>
 </resources>

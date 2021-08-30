@@ -26,6 +26,18 @@
         app:srcCompat="@drawable/ic_russia"
         app:tint="@null" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/mainFragmentFABLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/fab_margin"
+        android:backgroundTint="@color/teal_700"
+        android:src="@android:drawable/ic_dialog_map"
+        app:layout_constraintBottom_toTopOf="@+id/mainFragmentFAB"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:maxImageSize="@dimen/fab_location_icon_size"
+        app:tint="@null" />
+
     <FrameLayout
         android:id="@+id/loadingLayout"
         android:layout_width="match_parent"
