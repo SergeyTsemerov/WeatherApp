@@ -38,6 +38,15 @@ class MainActivity : AppCompatActivity() {
                 }
                 true
             }
+            R.id.menu_contact_list -> {
+                supportFragmentManager.apply {
+                    beginTransaction()
+                        .add(R.id.container, ContactsFragment.newInstance())
+                        .addToBackStack("")
+                        .commitAllowingStateLoss()
+                }
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
