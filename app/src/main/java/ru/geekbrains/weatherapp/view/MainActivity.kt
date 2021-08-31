@@ -6,6 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import ru.geekbrains.weatherapp.R
 import ru.geekbrains.weatherapp.databinding.MainActivityBinding
+import ru.geekbrains.weatherapp.view.googlemaps.GoogleMapsFragment
 
 class MainActivity : AppCompatActivity() {
 
