@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when(item.itemId) {
+        return when (item.itemId) {
             R.id.menu_history -> {
                 supportFragmentManager.apply {
                     beginTransaction()
@@ -38,10 +38,10 @@ class MainActivity : AppCompatActivity() {
                 }
                 true
             }
-            R.id.menu_contact_list -> {
+            R.id.menu_google_maps -> {
                 supportFragmentManager.apply {
                     beginTransaction()
-                        .add(R.id.container, ContactsFragment.newInstance())
+                        .add(R.id.container, GoogleMapsFragment.newInstance())
                         .addToBackStack("")
                         .commitAllowingStateLoss()
                 }

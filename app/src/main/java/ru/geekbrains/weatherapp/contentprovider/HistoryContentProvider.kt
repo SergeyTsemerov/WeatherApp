@@ -95,7 +95,11 @@ class HistoryContentProvider : ContentProvider() {
         return if (values == null) {
             HistoryEntity()
         } else {
-            val id = if (values.containsKey(ID)) values[ID] as Long else 0
+            val id = if (values.containsKey(ID)) {
+                values[ID] as Long
+            } else {
+                0
+            }
             val city = values[CITY] as String
             val temperature = values[TEMPERATURE] as Int
             HistoryEntity(id, city, temperature)
