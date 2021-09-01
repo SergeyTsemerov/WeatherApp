@@ -1,4 +1,4 @@
-package ru.geekbrains.weatherapp.view
+package ru.geekbrains.weatherapp.view.googlemaps
 
 import android.Manifest
 import android.content.pm.PackageManager
@@ -51,6 +51,11 @@ class GoogleMapsFragment : Fragment() {
         return binding.root
     }
 
+    override fun onDestroyView() {
+        _binding = null
+        super.onDestroyView()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
@@ -65,7 +70,7 @@ class GoogleMapsFragment : Fragment() {
             Thread {
                 try {
                     val addresses = geoCoder.getFromLocationName(searchText, 1)
-                    if (addresses.size > 0) {
+                    if (addresses.isNotEmpty()) {
                         goToAddress(addresses, it, searchText)
                     }
                 } catch (e: IOException) {
@@ -102,7 +107,7 @@ class GoogleMapsFragment : Fragment() {
                 try {
                     val addresses =
                         geoCoder.getFromLocation(location.latitude, location.longitude, 1)
-                    textAddress.post { textAddress.text = addresses[0].getAddressLine(0) }
+                    textAddress.post { textAddress.text = addresses.first().getAddressLine(0) }
                 } catch (e: IOException) {
                     e.printStackTrace()
                 }
@@ -111,7 +116,7 @@ class GoogleMapsFragment : Fragment() {
     }
 
     private fun addMarkerToArray(location: LatLng) {
-        val marker = setMarker(location, markers.size.toString(), R.drawable.ic_map_marker)
+        val marker = setMarker(location, markers.size.toString(), R.drawable.ic_map_pin)
         markers.add(marker)
     }
 

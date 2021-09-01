@@ -4,9 +4,9 @@
 
     <item
         android:id="@+id/menu_google_maps"
-        android:icon="@drawable/ic_map_marker"
+        android:icon="@android:drawable/ic_dialog_map"
         android:title="@string/google_maps"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/menu_history"
