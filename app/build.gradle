@@ -4,9 +4,14 @@ plugins {
     id 'kotlin-android-extensions'
     id 'kotlin-kapt'
     id 'com.google.gms.google-services'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
 
 android {
+    signingConfigs {
+        beta {
+        }
+    }
     compileSdkVersion 30
 
     defaultConfig {
@@ -23,6 +28,13 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            versionNameSuffix "-debug"
+        }
+        beta {
+            initWith debug
+            versionNameSuffix "-beta"
         }
     }
     compileOptions {
